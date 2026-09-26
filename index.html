@@ -1,13 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="KuxSwgCwyX2fFzXUfJTYqZGM743IonI1NQwkifJf50" />
-    <title>Rahul Singh | Backend Software Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="KuxSwgCwyX2fFzXUfJTYqZGM743IonI1NQwkifJf50" />
+<title>Rahul Singh — Software Engineer</title>
+<!-- If you have a Google Search Console verification tag, paste it here -->
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220; --panel:#101A2C; --border:#1E2A3F;
+    --text:#E8ECF4; --dim:#8B96A8; --accent:#E8A33D; --mint:#3ECF8E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif; line-height:1.6;
+    font-size:16px;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(11,18,32,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:760px; margin:0 auto; padding:16px 24px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-inner .logo{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--mint);}
+  .nav-inner nav a{
+    color:var(--dim); font-size:14px; margin-left:20px; font-family:'IBM Plex Mono',monospace;
+  }
+  .nav-inner nav a:hover{color:var(--text); text-decoration:none;}
+
+  section{padding:64px 0;}
+  section#hero{padding:96px 0 64px;}
+
+  .tag-line{
+    font-family:'IBM Plex Mono',monospace; color:var(--mint); font-size:14px;
+    margin-bottom:16px; display:inline-block;
+  }
+  h1{font-size:44px; font-weight:700; line-height:1.15; letter-spacing:-0.01em;}
+  .role{color:var(--dim); font-size:19px; margin-top:14px; max-width:520px;}
+  .cta-row{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:14px; padding:11px 20px;
+    border-radius:4px; border:1px solid var(--border); display:inline-block;
+  }
+  .btn.primary{background:var(--accent); color:#1A1305; border-color:var(--accent); font-weight:600;}
+  .btn.primary:hover{text-decoration:none; opacity:0.9;}
+  .btn.ghost{color:var(--text);}
+  .btn.ghost:hover{border-color:var(--dim); text-decoration:none;}
+
+  h2{
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace; color:var(--dim);
+    border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:28px;
+  }
+
+  #about p{color:var(--text); max-width:640px; margin-bottom:14px;}
+  #about .meta{color:var(--dim); font-size:14px; margin-top:20px; font-family:'IBM Plex Mono',monospace;}
+
+  .skill-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px 40px;}
+  .skill-group h3{font-size:15px; margin-bottom:8px; color:var(--text);}
+  .skill-group p{color:var(--dim); font-size:14px; line-height:1.7;}
+
+  .project{
+    border-top:1px solid var(--border); padding:28px 0;
+  }
+  .project:first-child{border-top:none; padding-top:0;}
+  .project .p-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;}
+  .project h3{font-size:19px;}
+  .project .p-meta{color:var(--dim); font-size:13px; font-family:'IBM Plex Mono',monospace;}
+  .project ul{margin:14px 0 14px 18px; color:var(--text); font-size:15px;}
+  .project ul li{margin-bottom:6px;}
+  .stack{color:var(--mint); font-size:13px; font-family:'IBM Plex Mono',monospace;}
+  .project a.repo{font-size:13px; font-family:'IBM Plex Mono',monospace;}
+
+  .list-cols{display:grid; grid-template-columns:1fr 1fr; gap:8px 40px;}
+  .list-cols ul{list-style:none;}
+  .list-cols li{
+    padding:10px 0; border-bottom:1px solid var(--border);
+    font-size:15px; color:var(--text);
+  }
+  .list-cols h3{font-size:15px; margin-bottom:12px; color:var(--dim); font-family:'IBM Plex Mono',monospace; font-weight:500;}
+
+  footer{padding:64px 0 80px; border-top:1px solid var(--border); margin-top:40px;}
+  footer p{color:var(--dim); font-size:15px; margin-bottom:20px; max-width:480px;}
+  footer .links a{margin-right:20px; font-family:'IBM Plex Mono',monospace; font-size:14px;}
+  footer .fine{margin-top:40px; color:#4E586A; font-size:13px;}
+
+  @media(max-width:600px){
+    h1{font-size:32px;}
+    .skill-grid, .list-cols{grid-template-columns:1fr;}
+    .nav-inner nav a{margin-left:12px; font-size:13px;}
+  }
+</style>
 </head>
 <body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="logo">$ rahul</span>
+    <nav>
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap">
+    <span class="tag-line">// building event-driven backend systems</span>
     <h1>Rahul Singh</h1>
-    <p>Software Engineer | Java, Spring Boot, Microservices</p>
+    <p class="role">Software Engineer specializing in Java, Spring Boot &amp; Apache Kafka — RESTful APIs, microservices, and relational systems built to scale.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn ghost" href="Rahul_Singh_Resume.pdf">Download resume</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p>Detail-oriented Software Engineer with hands-on experience building RESTful APIs, event-driven microservices, and relational database systems using Java, Spring Boot, and Apache Kafka.</p>
+    <p>Improved SQL query performance by 40%+ through indexing and schema optimization, and delivered a platform supporting 500+ concurrent users. Completed the JPMorgan Chase Software Engineering Job Simulation, building a Kafka-based transaction-processing microservice.</p>
+    <p>HackerRank-certified in SQL (Advanced) and Java, with a strong foundation in Data Structures, Algorithms, and Object-Oriented Programming.</p>
+    <p class="meta">B.Tech, Computer Science &amp; Engineering (2023–2027) · Babu Banarasi Das University, Lucknow<br>Lucknow, Uttar Pradesh, India · Open to Software Engineering roles</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <p>Java · SQL · JavaScript</p>
+      </div>
+      <div class="skill-group">
+        <h3>Backend &amp; Frameworks</h3>
+        <p>Spring Boot · Spring MVC · Spring Data JPA · Hibernate · REST APIs · JDBC</p>
+      </div>
+      <div class="skill-group">
+        <h3>Architecture &amp; Messaging</h3>
+        <p>Apache Kafka · Microservices · Event-Driven Architecture · System Design</p>
+      </div>
+      <div class="skill-group">
+        <h3>Databases</h3>
+        <p>MySQL · H2 Database · RDBMS · Query Optimization</p>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; DevOps</h3>
+        <p>AWS (in progress) · Git · GitHub · Maven · CI/CD · Linux</p>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Practices</h3>
+        <p>JUnit · Postman · IntelliJ IDEA · Agile/Scrum</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="p-head">
+        <h3>Midas Core</h3>
+        <span class="p-meta">JPMorgan Chase Job Simulation · Jul 2026</span>
+      </div>
+      <ul>
+        <li>Built a Spring Boot microservice consuming and deserializing high-volume transaction messages via Apache Kafka</li>
+        <li>Implemented transaction validation, persistence, and balance-update logic with Spring Data JPA and H2</li>
+        <li>Integrated an external REST Incentive API via RestTemplate, exposing a JSON balance-query endpoint</li>
+      </ul>
+      <p class="stack">Java · Spring Boot · Apache Kafka · Spring Data JPA · H2</p>
+      <p><a class="repo" href="https://github.com/Rahul-web01/midas-core">github.com/Rahul-web01/midas-core →</a></p>
+    </div>
+
+    <div class="project">
+      <div class="p-head">
+        <h3>ScholarSpace</h3>
+        <span class="p-meta">Academic Resource Platform · Aug 2025</span>
+      </div>
+      <ul>
+        <li>Architected a scalable REST API backend for a multi-role platform (admin, faculty, student) supporting 500+ concurrent users</li>
+        <li>Designed a normalized MySQL schema (3NF), boosting high-frequency query performance by 40%+ via indexing</li>
+        <li>Implemented secure Role-Based Access Control (RBAC) across admin, faculty, and student roles</li>
+      </ul>
+      <p class="stack">Java · Spring Boot · MySQL · REST API</p>
+      <p><a class="repo" href="https://github.com/Rahul-web01/Scholarspace-main">github.com/Rahul-web01/Scholarspace-main →</a></p>
+    </div>
+
+    <div class="project">
+      <div class="p-head">
+        <h3>Real-Time Currency Exchange API</h3>
+        <span class="p-meta">Jan 2026</span>
+      </div>
+      <ul>
+        <li>Built a Java backend integrating third-party exchange-rate APIs for real-time multi-currency conversion</li>
+        <li>Implemented fault-tolerant JSON parsing with structured exception handling and retry logic</li>
+      </ul>
+      <p class="stack">Java · REST API Integration · JSON Parsing</p>
+      <p><a class="repo" href="https://github.com/Rahul-web01/Currency-Exchange-App">github.com/Rahul-web01/Currency-Exchange-App →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <h2>Certifications &amp; Achievements</h2>
+    <div class="list-cols">
+      <div>
+        <h3>Certifications</h3>
+        <ul>
+          <li>SQL (Advanced) — HackerRank</li>
+          <li>Java (Basic) — HackerRank</li>
+          <li>Communication Skills — TCS iON</li>
+          <li>YUVA AI For All — TCS iON × IndiaAI</li>
+          <li>AI &amp; Cybersecurity Awareness — MPIT-CoE</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Achievements</h3>
+        <ul>
+          <li>Zomathon — Data Hackathon (Coding Ninjas × Zomato)</li>
+          <li>NationBuilding Case Study Competition 2026 — Unstop</li>
+          <li>AINCAT 2026 — Naukri Campus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Open to Software Engineering opportunities — reach out by email or connect on LinkedIn.</p>
+    <div class="links">
+      <a href="mailto:contact.rahul82@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/rahul-singh-cs">LinkedIn</a>
+      <a href="https://github.com/Rahul-web01">GitHub</a>
+    </div>
+    <p class="fine">Rahul Singh · Lucknow, India</p>
+  </div>
+</footer>
+
 </body>
 </html>
