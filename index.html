@@ -1,105 +1,122 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Singh — Software Engineer</title>
-<meta name="google-site-verification" content="KuxSwgCwyX2fFzXUfJTYqZGM743IonI1NQwkifJf50"/> 
+<meta name="google-site-verification" content="KuxSwgCwyX2fFzXUfJTYqZGM743IonI1NQwkifJf50"/>
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B1220; --panel:#101A2C; --border:#1E2A3F;
-    --text:#E8ECF4; --dim:#8B96A8; --accent:#E8A33D; --mint:#3ECF8E;
+    --bg:#0A0A0F; --panel:#12121A; --line:#242432;
+    --text:#F2F1ED; --dim:#8D8D99;
+    --gold:#D4A84B; --gold-light:#F0D28C;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:'IBM Plex Sans',sans-serif; line-height:1.6;
-    font-size:16px;
+  body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.6;}
+  .mono{font-family:'Space Mono',monospace;}
+  .display{font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  .tag{
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.12em;
+    color:var(--gold); text-transform:uppercase; margin-bottom:14px; display:block;
   }
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  .grad{background:linear-gradient(90deg,var(--gold-light),var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent;}
 
-  header.nav{
-    position:sticky; top:0; z-index:10;
-    background:rgba(11,18,32,0.85); backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
+  header.nav{position:sticky; top:0; z-index:20; background:rgba(10,10,15,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1080px; margin:0 auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center;}
+  .nav-inner .logo{font-family:'Space Mono',monospace; font-size:14px; letter-spacing:0.08em;}
+  .nav-inner .logo span{color:var(--gold);}
+  .nav-inner nav{display:flex; align-items:center; gap:26px;}
+  .nav-inner nav a{font-size:13px; color:var(--dim); font-family:'Space Mono',monospace; letter-spacing:0.06em;}
+  .nav-inner nav a:hover{color:var(--text);}
+  .nav-cta{border:1px solid var(--gold); color:var(--gold) !important; padding:8px 16px; border-radius:2px; font-size:12px !important;}
+  .nav-cta:hover{background:var(--gold); color:#0A0A0F !important;}
+
+  #hero{padding:80px 0 60px; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
+  #hero h1{font-size:clamp(40px,6vw,72px); line-height:0.98; margin-bottom:20px;}
+  #hero .role{font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.05em; color:var(--dim); margin-bottom:20px;}
+  #hero .role b{color:var(--text); font-weight:400;}
+  #hero p.pitch{color:var(--dim); max-width:460px; margin-bottom:32px; font-size:15px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{font-family:'Space Mono',monospace; font-size:13px; padding:13px 24px; border-radius:2px; border:1px solid var(--line); display:inline-block; letter-spacing:0.04em;}
+  .btn.primary{background:var(--gold); color:#0A0A0F; border-color:var(--gold); font-weight:700;}
+  .btn.primary:hover{background:var(--gold-light); border-color:var(--gold-light);}
+  .btn.ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  .photo-stage{position:relative; display:flex; justify-content:center; align-items:flex-end; min-height:420px;}
+  .glow{position:absolute; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(212,168,75,0.35), transparent 70%); filter:blur(10px); top:0; animation:pulse 5s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.6; transform:scale(1);} 50%{opacity:1; transform:scale(1.08);}}
+  .photo-stage img{
+    position:relative; z-index:1; width:280px; height:340px; object-fit:cover;
+    border-radius:6px; filter:grayscale(0.15) contrast(1.08) brightness(0.96);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.7);
   }
-  .nav-inner{
-    max-width:760px; margin:0 auto; padding:16px 24px;
-    display:flex; justify-content:space-between; align-items:center;
+  .quote-badge{
+    position:absolute; right:0; bottom:20px; z-index:2; text-align:right;
+    font-family:'Space Mono',monospace; font-size:11px; color:var(--dim); max-width:170px; line-height:1.6;
   }
-  .nav-inner .logo{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--mint);}
-  .nav-inner nav a{
-    color:var(--dim); font-size:14px; margin-left:20px; font-family:'IBM Plex Mono',monospace;
+  .quote-badge .sig{color:var(--gold); font-style:italic; font-family:Georgia,serif; font-size:15px; margin-top:4px;}
+
+  #hero h1, .hero-grid .role, .hero-grid p.pitch, .hero-grid .cta-row{
+    animation:fadeUp 0.8s ease both;
   }
-  .nav-inner nav a:hover{color:var(--text); text-decoration:none;}
+  .hero-grid .role{animation-delay:0.1s;}
+  .hero-grid p.pitch{animation-delay:0.2s;}
+  .hero-grid .cta-row{animation-delay:0.3s;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
 
-  section{padding:64px 0;}
-  section#hero{padding:96px 0 64px;}
+  section{padding:80px 0;}
+  section h2.headline{font-size:clamp(28px,4vw,44px); line-height:1.05; margin-bottom:36px;}
 
-  .tag-line{
-    font-family:'IBM Plex Mono',monospace; color:var(--mint); font-size:14px;
-    margin-bottom:16px; display:inline-block;
-  }
-  h1{font-size:44px; font-weight:700; line-height:1.15; letter-spacing:-0.01em;}
-  .role{color:var(--dim); font-size:19px; margin-top:14px; max-width:520px;}
-  .cta-row{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    font-family:'IBM Plex Mono',monospace; font-size:14px; padding:11px 20px;
-    border-radius:4px; border:1px solid var(--border); display:inline-block;
-  }
-  .btn.primary{background:var(--accent); color:#1A1305; border-color:var(--accent); font-weight:600;}
-  .btn.primary:hover{text-decoration:none; opacity:0.9;}
-  .btn.ghost{color:var(--text);}
-  .btn.ghost:hover{border-color:var(--dim); text-decoration:none;}
+  #about .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  #about p{color:var(--dim); margin-bottom:14px; font-size:15px;}
+  #about .fact-list{list-style:none; font-family:'Space Mono',monospace; font-size:13px;}
+  #about .fact-list li{padding:12px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:var(--dim);}
+  #about .fact-list li span{color:var(--text);}
 
-  h2{
-    font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
-    font-family:'IBM Plex Mono',monospace; color:var(--dim);
-    border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:28px;
-  }
+  .project{border-top:1px solid var(--line); padding:32px 0; display:grid; grid-template-columns:2fr 1fr; gap:32px;}
+  .project:first-of-type{border-top:none;}
+  .project h3{font-size:24px; margin-bottom:6px;}
+  .project .p-meta{font-family:'Space Mono',monospace; font-size:12px; color:var(--gold); margin-bottom:12px; display:block;}
+  .project p{color:var(--dim); font-size:14px; margin-bottom:14px;}
+  .tag-pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;}
+  .tag-pills span{font-family:'Space Mono',monospace; font-size:11px; border:1px solid var(--line); padding:5px 10px; border-radius:2px; color:var(--dim);}
+  .project a.repo{font-family:'Space Mono',monospace; font-size:12px; color:var(--gold); border-bottom:1px solid var(--gold); padding-bottom:2px;}
+  .metric-panel{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:20px; align-self:start;}
+  .metric-panel .m-label{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--dim); text-transform:uppercase; margin-bottom:14px;}
+  .metric-panel .m-row{display:flex; justify-content:space-between; padding:8px 0; border-top:1px solid var(--line); font-size:13px;}
+  .metric-panel .m-row:first-of-type{border-top:none;}
+  .metric-panel .m-row span:last-child{color:var(--gold); font-family:'Space Mono',monospace;}
 
-  #about p{color:var(--text); max-width:640px; margin-bottom:14px;}
-  #about .meta{color:var(--dim); font-size:14px; margin-top:20px; font-family:'IBM Plex Mono',monospace;}
+  .skill-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px 48px;}
+  .skill-group h3{font-size:14px; margin-bottom:8px; font-family:'Space Mono',monospace; color:var(--text); letter-spacing:0.04em;}
+  .skill-group p{color:var(--dim); font-size:13.5px; line-height:1.8;}
 
-  .skill-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px 40px;}
-  .skill-group h3{font-size:15px; margin-bottom:8px; color:var(--text);}
-  .skill-group p{color:var(--dim); font-size:14px; line-height:1.7;}
+  .timeline{position:relative; padding-left:32px;}
+  .timeline::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--gold),var(--line));}
+  .t-item{position:relative; margin-bottom:36px;}
+  .t-item::before{content:""; position:absolute; left:-32px; top:4px; width:11px; height:11px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(212,168,75,0.15);}
+  .t-item .t-date{font-family:'Space Mono',monospace; font-size:12px; color:var(--gold); margin-bottom:6px; display:block;}
+  .t-item h3{font-size:19px; margin-bottom:4px;}
+  .t-item .t-org{font-family:'Space Mono',monospace; font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; display:block;}
+  .t-item p{color:var(--dim); font-size:14px; max-width:560px;}
 
-  .project{
-    border-top:1px solid var(--border); padding:28px 0;
-  }
-  .project:first-child{border-top:none; padding-top:0;}
-  .project .p-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;}
-  .project h3{font-size:19px;}
-  .project .p-meta{color:var(--dim); font-size:13px; font-family:'IBM Plex Mono',monospace;}
-  .project ul{margin:14px 0 14px 18px; color:var(--text); font-size:15px;}
-  .project ul li{margin-bottom:6px;}
-  .stack{color:var(--mint); font-size:13px; font-family:'IBM Plex Mono',monospace;}
-  .project a.repo{font-size:13px; font-family:'IBM Plex Mono',monospace;}
+  footer{padding:90px 0 60px; border-top:1px solid var(--line); text-align:center;}
+  footer h2{font-size:clamp(30px,5vw,52px); margin-bottom:20px;}
+  footer p{color:var(--dim); margin-bottom:32px;}
+  footer .links{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:50px;}
+  footer .fine{color:#54545E; font-size:12px; font-family:'Space Mono',monospace;}
 
-  .list-cols{display:grid; grid-template-columns:1fr 1fr; gap:8px 40px;}
-  .list-cols ul{list-style:none;}
-  .list-cols li{
-    padding:10px 0; border-bottom:1px solid var(--border);
-    font-size:15px; color:var(--text);
-  }
-  .list-cols h3{font-size:15px; margin-bottom:12px; color:var(--dim); font-family:'IBM Plex Mono',monospace; font-weight:500;}
-
-  footer{padding:64px 0 80px; border-top:1px solid var(--border); margin-top:40px;}
-  footer p{color:var(--dim); font-size:15px; margin-bottom:20px; max-width:480px;}
-  footer .links a{margin-right:20px; font-family:'IBM Plex Mono',monospace; font-size:14px;}
-  footer .fine{margin-top:40px; color:#4E586A; font-size:13px;}
-
-  @media(max-width:600px){
-    h1{font-size:32px;}
-    .skill-grid, .list-cols{grid-template-columns:1fr;}
-    .nav-inner nav a{margin-left:12px; font-size:13px;}
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .photo-stage{margin-top:20px;}
+    #about .about-grid, .project, .skill-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -107,138 +124,154 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <span class="logo">$ rahul</span>
+    <span class="logo">RAHUL<span>.</span>SINGH</span>
     <nav>
-      <a href="#about">about</a>
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
-      <a href="#contact">contact</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a class="nav-cta" href="mailto:contact.rahul82@gmail.com">Let's talk →</a>
     </nav>
   </div>
 </header>
 
 <section id="hero">
-  <div class="wrap">
-    <span class="tag-line">// building event-driven backend systems</span>
-    <h1>Rahul Singh</h1>
-    <p class="role">Software Engineer specializing in Java, Spring Boot &amp; Apache Kafka — RESTful APIs, microservices, and relational systems built to scale.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#projects">View projects</a>
-      <a class="btn ghost" href="Rahul_Singh_Resume.pdf">Download resume</a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">01 / Software Engineer</span>
+      <h1 class="display">I Build <span class="grad">Backend<br>Systems</span> That Scale</h1>
+      <p class="role">JAVA · SPRING BOOT · APACHE KAFKA · <b>MICROSERVICES</b></p>
+      <p class="pitch">I turn business logic into resilient, event-driven services — where clean architecture meets fault-tolerant systems, and code is built to hold up under real traffic.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">Explore My Work →</a>
+        <a class="btn ghost" href="Rahul_Singh_Resume.pdf">Download Resume</a>
+      </div>
+    </div>
+    <div class="photo-stage">
+      <div class="glow"></div>
+      <img src="profile.jpg" alt="Rahul Singh">
+      <div class="quote-badge">CODE IS MY CRAFT.<br>SCALE IS MY GOAL.<span class="sig">Rahul</span></div>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap">
-    <h2>About</h2>
-    <p>Detail-oriented Software Engineer with hands-on experience building RESTful APIs, event-driven microservices, and relational database systems using Java, Spring Boot, and Apache Kafka.</p>
-    <p>Improved SQL query performance by 40%+ through indexing and schema optimization, and delivered a platform supporting 500+ concurrent users. Completed the JPMorgan Chase Software Engineering Job Simulation, building a Kafka-based transaction-processing microservice.</p>
-    <p>HackerRank-certified in SQL (Advanced) and Java, with a strong foundation in Data Structures, Algorithms, and Object-Oriented Programming.</p>
-    <p class="meta">B.Tech, Computer Science &amp; Engineering (2023–2027) · Babu Banarasi Das University, Lucknow<br>Lucknow, Uttar Pradesh, India · Open to Software Engineering roles</p>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <h2>Skills</h2>
-    <div class="skill-grid">
-      <div class="skill-group">
-        <h3>Languages</h3>
-        <p>Java · SQL · JavaScript</p>
+    <span class="tag">02 / About</span>
+    <h2 class="headline">Detail-oriented, <span class="grad">systems-minded.</span></h2>
+    <div class="about-grid">
+      <div>
+        <p>Software Engineer with hands-on experience building RESTful APIs, event-driven microservices, and relational database systems using Java, Spring Boot, and Apache Kafka.</p>
+        <p>Improved SQL query performance by 40%+ through indexing and schema optimization, and delivered a platform supporting 500+ concurrent users. Completed the JPMorgan Chase Software Engineering Job Simulation, building a Kafka-based transaction-processing microservice.</p>
       </div>
-      <div class="skill-group">
-        <h3>Backend &amp; Frameworks</h3>
-        <p>Spring Boot · Spring MVC · Spring Data JPA · Hibernate · REST APIs · JDBC</p>
-      </div>
-      <div class="skill-group">
-        <h3>Architecture &amp; Messaging</h3>
-        <p>Apache Kafka · Microservices · Event-Driven Architecture · System Design</p>
-      </div>
-      <div class="skill-group">
-        <h3>Databases</h3>
-        <p>MySQL · H2 Database · RDBMS · Query Optimization</p>
-      </div>
-      <div class="skill-group">
-        <h3>Cloud &amp; DevOps</h3>
-        <p>AWS (in progress) · Git · GitHub · Maven · CI/CD · Linux</p>
-      </div>
-      <div class="skill-group">
-        <h3>Tools &amp; Practices</h3>
-        <p>JUnit · Postman · IntelliJ IDEA · Agile/Scrum</p>
-      </div>
+      <ul class="fact-list">
+        <li>Location <span>Lucknow, India</span></li>
+        <li>Education <span>B.Tech CSE, 2023–2027</span></li>
+        <li>Focus <span>Backend & Distributed Systems</span></li>
+        <li>Certified <span>SQL (Advanced), Java — HackerRank</span></li>
+        <li>Status <span>Open to opportunities</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section id="projects">
   <div class="wrap">
-    <h2>Projects</h2>
+    <span class="tag">03 / Featured Work</span>
+    <h2 class="headline">Selected work.<br><span class="grad">Systems built to hold.</span></h2>
 
     <div class="project">
-      <div class="p-head">
+      <div>
         <h3>Midas Core</h3>
         <span class="p-meta">JPMorgan Chase Job Simulation · Jul 2026</span>
+        <p>A Spring Boot microservice consuming and deserializing high-volume transaction messages via Apache Kafka. Implements validation, persistence, and balance-update logic with Spring Data JPA, plus an integrated external REST Incentive API.</p>
+        <div class="tag-pills"><span>Java</span><span>Spring Boot</span><span>Apache Kafka</span><span>Spring Data JPA</span><span>H2</span></div>
+        <a class="repo" href="https://github.com/Rahul-web01/midas-core">View on GitHub →</a>
       </div>
-      <ul>
-        <li>Built a Spring Boot microservice consuming and deserializing high-volume transaction messages via Apache Kafka</li>
-        <li>Implemented transaction validation, persistence, and balance-update logic with Spring Data JPA and H2</li>
-        <li>Integrated an external REST Incentive API via RestTemplate, exposing a JSON balance-query endpoint</li>
-      </ul>
-      <p class="stack">Java · Spring Boot · Apache Kafka · Spring Data JPA · H2</p>
-      <p><a class="repo" href="https://github.com/Rahul-web01/midas-core">github.com/Rahul-web01/midas-core →</a></p>
+      <div class="metric-panel">
+        <div class="m-label">Architecture Metrics</div>
+        <div class="m-row"><span>Messaging</span><span>Kafka</span></div>
+        <div class="m-row"><span>Persistence</span><span>JPA / H2</span></div>
+        <div class="m-row"><span>Integration</span><span>REST API</span></div>
+      </div>
     </div>
 
     <div class="project">
-      <div class="p-head">
+      <div>
         <h3>ScholarSpace</h3>
         <span class="p-meta">Academic Resource Platform · Aug 2025</span>
+        <p>A scalable REST API backend for a multi-role platform (admin, faculty, student). Normalized MySQL schema (3NF) with strategic indexing, and role-based access control across all tiers.</p>
+        <div class="tag-pills"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>REST API</span></div>
+        <a class="repo" href="https://github.com/Rahul-web01/Scholarspace-main">View on GitHub →</a>
       </div>
-      <ul>
-        <li>Architected a scalable REST API backend for a multi-role platform (admin, faculty, student) supporting 500+ concurrent users</li>
-        <li>Designed a normalized MySQL schema (3NF), boosting high-frequency query performance by 40%+ via indexing</li>
-        <li>Implemented secure Role-Based Access Control (RBAC) across admin, faculty, and student roles</li>
-      </ul>
-      <p class="stack">Java · Spring Boot · MySQL · REST API</p>
-      <p><a class="repo" href="https://github.com/Rahul-web01/Scholarspace-main">github.com/Rahul-web01/Scholarspace-main →</a></p>
+      <div class="metric-panel">
+        <div class="m-label">Architecture Metrics</div>
+        <div class="m-row"><span>Concurrency</span><span>500+ users</span></div>
+        <div class="m-row"><span>Query Gain</span><span>+40%</span></div>
+        <div class="m-row"><span>Access</span><span>RBAC</span></div>
+      </div>
     </div>
 
     <div class="project">
-      <div class="p-head">
-        <h3>Real-Time Currency Exchange API</h3>
+      <div>
+        <h3>Currency Exchange API</h3>
         <span class="p-meta">Jan 2026</span>
+        <p>A Java backend integrating third-party exchange-rate APIs for real-time multi-currency conversion, with fault-tolerant JSON parsing, structured exception handling, and retry logic.</p>
+        <div class="tag-pills"><span>Java</span><span>REST Integration</span><span>JSON Parsing</span></div>
+        <a class="repo" href="https://github.com/Rahul-web01/Currency-Exchange-App">View on GitHub →</a>
       </div>
-      <ul>
-        <li>Built a Java backend integrating third-party exchange-rate APIs for real-time multi-currency conversion</li>
-        <li>Implemented fault-tolerant JSON parsing with structured exception handling and retry logic</li>
-      </ul>
-      <p class="stack">Java · REST API Integration · JSON Parsing</p>
-      <p><a class="repo" href="https://github.com/Rahul-web01/Currency-Exchange-App">github.com/Rahul-web01/Currency-Exchange-App →</a></p>
+      <div class="metric-panel">
+        <div class="m-label">Architecture Metrics</div>
+        <div class="m-row"><span>Reliability</span><span>Retry Logic</span></div>
+        <div class="m-row"><span>Data</span><span>JSON / REST</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="credentials">
+<section id="skills">
   <div class="wrap">
-    <h2>Certifications &amp; Achievements</h2>
-    <div class="list-cols">
-      <div>
-        <h3>Certifications</h3>
-        <ul>
-          <li>SQL (Advanced) — HackerRank</li>
-          <li>Java (Basic) — HackerRank</li>
-          <li>Communication Skills — TCS iON</li>
-          <li>YUVA AI For All — TCS iON × IndiaAI</li>
-          <li>AI &amp; Cybersecurity Awareness — MPIT-CoE</li>
-        </ul>
+    <span class="tag">04 / Tech Matrix</span>
+    <h2 class="headline">Precision, <span class="grad">applied.</span></h2>
+    <div class="skill-grid">
+      <div class="skill-group"><h3>Languages</h3><p>Java · SQL · JavaScript</p></div>
+      <div class="skill-group"><h3>Backend & Frameworks</h3><p>Spring Boot · Spring MVC · Spring Data JPA · Hibernate · REST APIs · JDBC</p></div>
+      <div class="skill-group"><h3>Architecture & Messaging</h3><p>Apache Kafka · Microservices · Event-Driven Architecture · System Design</p></div>
+      <div class="skill-group"><h3>Databases</h3><p>MySQL · H2 Database · RDBMS · Query Optimization</p></div>
+      <div class="skill-group"><h3>Cloud & DevOps</h3><p>AWS (in progress) · Git · GitHub · Maven · CI/CD · Linux</p></div>
+      <div class="skill-group"><h3>Tools & Practices</h3><p>JUnit · Postman · IntelliJ IDEA · Agile/Scrum</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="tag">05 / Milestones</span>
+    <h2 class="headline">Where the work <span class="grad">shows up.</span></h2>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="t-date">Jul 2026</span>
+        <h3>JPMorgan Chase Job Simulation</h3>
+        <span class="t-org">Forage</span>
+        <p>Built Midas Core — a Kafka-based transaction-processing microservice with Spring Data JPA persistence and REST integration.</p>
       </div>
-      <div>
-        <h3>Achievements</h3>
-        <ul>
-          <li>Zomathon — Data Hackathon (Coding Ninjas × Zomato)</li>
-          <li>NationBuilding Case Study Competition 2026 — Unstop</li>
-          <li>AINCAT 2026 — Naukri Campus</li>
-        </ul>
+      <div class="t-item">
+        <span class="t-date">2026</span>
+        <h3>Zomathon — Data Hackathon</h3>
+        <span class="t-org">Coding Ninjas × Zomato</span>
+        <p>Applied data analytics and collaborative problem-solving to a real-world business case.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-date">2026</span>
+        <h3>NationBuilding & AINCAT</h3>
+        <span class="t-org">Unstop · Naukri Campus</span>
+        <p>Competitive case-study and quantitative reasoning assessments.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-date">2023 – 2027</span>
+        <h3>B.Tech, Computer Science & Engineering</h3>
+        <span class="t-org">Babu Banarasi Das University, Lucknow</span>
+        <p>HackerRank-certified in SQL (Advanced) and Java. Strong foundation in DSA and OOP.</p>
       </div>
     </div>
   </div>
@@ -246,14 +279,15 @@
 
 <footer id="contact">
   <div class="wrap">
-    <h2>Contact</h2>
-    <p>Open to Software Engineering opportunities — reach out by email or connect on LinkedIn.</p>
+    <span class="tag" style="text-align:center;">06 / Contact</span>
+    <h2 class="display">Let's Build <span class="grad">Something.</span></h2>
+    <p>Open to Software Engineering opportunities — reach out anytime.</p>
     <div class="links">
-      <a href="mailto:contact.rahul82@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/rahul-singh-cs">LinkedIn</a>
-      <a href="https://github.com/Rahul-web01">GitHub</a>
+      <a class="btn primary" href="mailto:contact.rahul82@gmail.com">Email Me</a>
+      <a class="btn ghost" href="https://linkedin.com/in/rahul-singh-cs">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/Rahul-web01">GitHub</a>
     </div>
-    <p class="fine">Rahul Singh · Lucknow, India</p>
+    <span class="fine">© 2026 RAHUL SINGH — LUCKNOW, INDIA</span>
   </div>
 </footer>
 
