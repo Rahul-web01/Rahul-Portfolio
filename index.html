@@ -51,7 +51,7 @@
 
   .photo-stage{position:relative; display:flex; justify-content:center; align-items:flex-end; min-height:420px;}
   .glow{position:absolute; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(212,168,75,0.35), transparent 70%); filter:blur(10px); top:0; animation:pulse 5s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{opacity:0.6; transform:scale(1);} 50%{opacity:1; transform:scale(1.08);}}
+  @keyframes pulse{0%,100%{opacity:0.6;} 50%{opacity:1;}}
   .photo-stage img{
     position:relative; z-index:1; width:280px; height:340px; object-fit:cover;
     border-radius:6px; filter:grayscale(0.15) contrast(1.08) brightness(0.96);
@@ -118,6 +118,26 @@
     .photo-stage{margin-top:20px;}
     #about .about-grid, .project, .skill-grid{grid-template-columns:1fr;}
   }
+
+  /* Scroll-reveal: elements fade + rise into place as you scroll to them */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  /* Hover reactions: cards and pills respond to the cursor */
+  .project{transition:transform 0.3s ease, border-color 0.3s ease;}
+  .project:hover{transform:translateY(-4px);}
+  .metric-panel{transition:border-color 0.3s ease, box-shadow 0.3s ease;}
+  .project:hover .metric-panel{border-color:var(--gold); box-shadow:0 10px 30px -12px rgba(212,168,75,0.25);}
+  .tag-pills span{transition:border-color 0.25s ease, color 0.25s ease;}
+  .tag-pills span:hover{border-color:var(--gold); color:var(--gold);}
+  .t-item{transition:transform 0.3s ease;}
+  .t-item:hover{transform:translateX(4px);}
+  .t-item:hover::before{background:var(--gold-light); box-shadow:0 0 0 6px rgba(212,168,75,0.25);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .glow{animation:none;}
+  }
 </style>
 </head>
 <body>
@@ -180,7 +200,7 @@
     <span class="tag">03 / Featured Work</span>
     <h2 class="headline">Selected work.<br><span class="grad">Systems built to hold.</span></h2>
 
-    <div class="project">
+    <div class="project reveal">
       <div>
         <h3>Midas Core</h3>
         <span class="p-meta">JPMorgan Chase Job Simulation · Jul 2026</span>
@@ -196,7 +216,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div>
         <h3>ScholarSpace</h3>
         <span class="p-meta">Academic Resource Platform · Aug 2025</span>
@@ -212,7 +232,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div>
         <h3>Currency Exchange API</h3>
         <span class="p-meta">Jan 2026</span>
@@ -234,12 +254,12 @@
     <span class="tag">04 / Tech Matrix</span>
     <h2 class="headline">Precision, <span class="grad">applied.</span></h2>
     <div class="skill-grid">
-      <div class="skill-group"><h3>Languages</h3><p>Java · SQL · JavaScript</p></div>
-      <div class="skill-group"><h3>Backend & Frameworks</h3><p>Spring Boot · Spring MVC · Spring Data JPA · Hibernate · REST APIs · JDBC</p></div>
-      <div class="skill-group"><h3>Architecture & Messaging</h3><p>Apache Kafka · Microservices · Event-Driven Architecture · System Design</p></div>
-      <div class="skill-group"><h3>Databases</h3><p>MySQL · H2 Database · RDBMS · Query Optimization</p></div>
-      <div class="skill-group"><h3>Cloud & DevOps</h3><p>AWS (in progress) · Git · GitHub · Maven · CI/CD · Linux</p></div>
-      <div class="skill-group"><h3>Tools & Practices</h3><p>JUnit · Postman · IntelliJ IDEA · Agile/Scrum</p></div>
+      <div class="skill-group reveal"><h3>Languages</h3><p>Java · SQL · JavaScript</p></div>
+      <div class="skill-group reveal"><h3>Backend & Frameworks</h3><p>Spring Boot · Spring MVC · Spring Data JPA · Hibernate · REST APIs · JDBC</p></div>
+      <div class="skill-group reveal"><h3>Architecture & Messaging</h3><p>Apache Kafka · Microservices · Event-Driven Architecture · System Design</p></div>
+      <div class="skill-group reveal"><h3>Databases</h3><p>MySQL · H2 Database · RDBMS · Query Optimization</p></div>
+      <div class="skill-group reveal"><h3>Cloud & DevOps</h3><p>AWS (in progress) · Git · GitHub · Maven · CI/CD · Linux</p></div>
+      <div class="skill-group reveal"><h3>Tools & Practices</h3><p>JUnit · Postman · IntelliJ IDEA · Agile/Scrum</p></div>
     </div>
   </div>
 </section>
@@ -249,25 +269,25 @@
     <span class="tag">05 / Milestones</span>
     <h2 class="headline">Where the work <span class="grad">shows up.</span></h2>
     <div class="timeline">
-      <div class="t-item">
+      <div class="t-item reveal">
         <span class="t-date">Jul 2026</span>
         <h3>JPMorgan Chase Job Simulation</h3>
         <span class="t-org">Forage</span>
         <p>Built Midas Core — a Kafka-based transaction-processing microservice with Spring Data JPA persistence and REST integration.</p>
       </div>
-      <div class="t-item">
+      <div class="t-item reveal">
         <span class="t-date">2026</span>
         <h3>Zomathon — Data Hackathon</h3>
         <span class="t-org">Coding Ninjas × Zomato</span>
         <p>Applied data analytics and collaborative problem-solving to a real-world business case.</p>
       </div>
-      <div class="t-item">
+      <div class="t-item reveal">
         <span class="t-date">2026</span>
         <h3>NationBuilding & AINCAT</h3>
         <span class="t-org">Unstop · Naukri Campus</span>
         <p>Competitive case-study and quantitative reasoning assessments.</p>
       </div>
-      <div class="t-item">
+      <div class="t-item reveal">
         <span class="t-date">2023 – 2027</span>
         <h3>B.Tech, Computer Science & Engineering</h3>
         <span class="t-org">Babu Banarasi Das University, Lucknow</span>
@@ -291,5 +311,31 @@
   </div>
 </footer>
 
+<script>
+  // Scroll-reveal: fade + rise each card/item in only once, as it enters the viewport
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Cursor-tracking spotlight: the glow behind the photo drifts gently toward the mouse
+  const hero = document.getElementById('hero');
+  const glow = document.querySelector('.glow');
+  if (hero && glow && matchMedia('(prefers-reduced-motion: no-preference)').matches){
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      glow.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+    });
+    hero.addEventListener('mouseleave', () => { glow.style.transform = 'translate(0,0)'; });
+  }
+</script>
 </body>
 </html>
